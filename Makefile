@@ -6,7 +6,7 @@
 #    By: obelaizi <obelaizi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/07 15:13:54 by aait-mal          #+#    #+#              #
-#    Updated: 2023/06/08 21:20:36 by obelaizi         ###   ########.fr        #
+#    Updated: 2023/06/08 21:43:38 by obelaizi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,9 +30,11 @@ $(NAME) :  $(OBJ)
 
 clean :
 	rm -rf $(OBJ)
+	make -C Libft clean
 
 fclean : clean
 	rm -rf $(NAME)
+	make -C Libft fclean
 
 re : fclean all
 
