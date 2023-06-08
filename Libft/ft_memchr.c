@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obelaizi <obelaizi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: obelaizi <obelaizi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/07 15:15:43 by aait-mal          #+#    #+#             */
-/*   Updated: 2023/06/08 21:16:10 by obelaizi         ###   ########.fr       */
+/*   Created: 2022/10/09 21:06:26 by obelaizi          #+#    #+#             */
+/*   Updated: 2022/11/02 13:03:03 by obelaizi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <signal.h>
-# include <readline/readline.h>
-# include "Libft/libft.h"
+void	*ft_memchr(const void *str, int c, size_t n)
+{
+	unsigned char	*s;
 
-void	display_prompt(void);
-
-#endif
+	s = (unsigned char *)str;
+	while (n--)
+	{
+		if ((unsigned char)c == *s)
+			return ((void *)s);
+		s++;
+	}
+	return (0);
+}

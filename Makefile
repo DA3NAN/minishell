@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aait-mal <aait-mal@student.1337.ma>        +#+  +:+       +#+         #
+#    By: obelaizi <obelaizi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/07 15:13:54 by aait-mal          #+#    #+#              #
-#    Updated: 2023/06/07 15:28:31 by aait-mal         ###   ########.fr        #
+#    Updated: 2023/06/08 21:20:36 by obelaizi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,10 +17,13 @@ HEADER = minishell.h
 CC = cc
 FLAGS = -Wall -Wextra -Werror
 
-all : $(NAME)
+all : libft.a $(NAME)
 
-$(NAME) : $(OBJ)
-	$(CC) $(FLAGS) $(OBJ) -o $(NAME) -lreadline
+libft.a : 
+	@make -C Libft all bonus
+
+$(NAME) :  $(OBJ)
+	$(CC) ./Libft/libft.a $(OBJ) -o $(NAME) -lreadline
 
 %.o: %.c $(HEADER)
 	$(CC) $(FLAGS) -c $< -o $@

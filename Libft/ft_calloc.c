@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obelaizi <obelaizi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: obelaizi <obelaizi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/07 15:15:43 by aait-mal          #+#    #+#             */
-/*   Updated: 2023/06/08 21:16:10 by obelaizi         ###   ########.fr       */
+/*   Created: 2022/10/11 19:26:32 by obelaizi          #+#    #+#             */
+/*   Updated: 2022/11/02 10:42:15 by obelaizi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <signal.h>
-# include <readline/readline.h>
-# include "Libft/libft.h"
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*s;
 
-void	display_prompt(void);
-
-#endif
+	if (count != 0 && count * size / count != size)
+		return (NULL);
+	s = malloc(count * size);
+	if (!s)
+		return (0);
+	ft_memset(s, 0, count * size);
+	return (s);
+}
