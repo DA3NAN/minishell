@@ -6,7 +6,7 @@
 /*   By: obelaizi <obelaizi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 15:15:43 by aait-mal          #+#    #+#             */
-/*   Updated: 2023/06/08 21:16:10 by obelaizi         ###   ########.fr       */
+/*   Updated: 2023/06/11 16:25:39 by obelaizi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,20 @@
 # include <signal.h>
 # include <readline/readline.h>
 # include "Libft/libft.h"
+
+typedef struct cmds
+{
+	char		*s;
+	struct cmds	*next;
+}	t_cmd;
+
+typedef struct minikhell
+{
+	char	**env;
+	t_cmd	*head;
+}	t_data;
+
+t_data	g_data;
 
 void	display_prompt(void);
 

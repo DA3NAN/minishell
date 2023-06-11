@@ -6,7 +6,7 @@
 /*   By: obelaizi <obelaizi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 20:55:59 by obelaizi          #+#    #+#             */
-/*   Updated: 2023/06/08 21:42:27 by obelaizi         ###   ########.fr       */
+/*   Updated: 2023/06/11 16:27:03 by obelaizi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,18 @@ void	export(char *argument)
 	*equal_sign = '\0';
 	*nm_vr = argument;
 	*vl_vr = equal_sign + 1;
-	while (env[++i])
+	while (g_data.env[++i])
 	{
-		if (!ft_strncmp(env[i], nm_vr, fr_strlen(nm_vr))
-			&& env[i][ft_strlen(nm_vr)] == '=')
+		if (!ft_strncmp(g_data.env[i], nm_vr, fr_strlen(nm_vr))
+			&& g_data.env[i][ft_strlen(nm_vr)] == '=')
 		{
 			updt_vr = malloc(ft_strlen(nm_vr) + ft_strlen(vl_vr) + 2);
-			env[i] = updt_vr;
+			g_data.env[i] = updt_vr;
 			return ;
 		}
 	}
 	updt_vr = malloc(ft_strlen(nm_vr) + ft_strlen(vl_vr) + 2);
-	return (env[i] = updt_vr, env[i + 1] = NULL);
+	return (g_data.env[i] = updt_vr, g_data.env[i + 1] = NULL);
 }
 
 void	unset(char *s)
@@ -70,13 +70,14 @@ void	unset(char *s)
 	int	j;
 
 	i = -1;
-	while (env[++i])
+	while (g_data.env[++i])
 	{
-		if (!ft_strncmp(env[i], s, ft_strlen(s)) && env[i][ft_strlen(s)] == '=')
+		if (!ft_strncmp(g_data.env[i], s, ft_strlen(s))
+			&& g_data.env[i][ft_strlen(s)] == '=')
 		{
 			j = i - 1;
-			while (env[++j])
-				env[j] = env[j + 1];
+			while (g_data.env[++j])
+				g_data.env[j] = g_data.env[j + 1];
 			return ;
 		}
 	}
