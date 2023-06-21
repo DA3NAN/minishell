@@ -6,7 +6,7 @@
 /*   By: obelaizi <obelaizi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 15:18:45 by aait-mal          #+#    #+#             */
-/*   Updated: 2023/06/11 16:22:43 by obelaizi         ###   ########.fr       */
+/*   Updated: 2023/06/12 11:42:07 by obelaizi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	display_prompt(void)
 	input = readline("minishell# ");
 	if (!input)
 		exit (0);
-	printf("You entered : %s\n", input);
+	parse(input);
 	free(input);
 }
 
@@ -44,9 +44,11 @@ char	*get_path(char **env)
 
 int	main(int argc, char **argv, char **env)
 {
+	if (argc != 1 && argv[1] != NULL)
+		return (printf("mamamia, don't use args\n"), 1);
 	g_data.env = ft_split(get_path(env), ':');
 	if (!g_data.env)
-		return (ft_print("ERROR\nthere is something with the path", 2), 1);
+		return (printf("ERROR\nthere is something with the path"), 1);
 	signal(SIGINT, sigusr_handler);
 	while (1)
 		display_prompt();

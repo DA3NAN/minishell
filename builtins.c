@@ -6,7 +6,7 @@
 /*   By: obelaizi <obelaizi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 20:55:59 by obelaizi          #+#    #+#             */
-/*   Updated: 2023/06/11 16:27:03 by obelaizi         ###   ########.fr       */
+/*   Updated: 2023/06/12 11:38:58 by obelaizi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,22 +37,17 @@ void	pwd(void)
 
 void	export(char *argument)
 {
-	char	*equal_sign;
 	char	*nm_vr;
 	char	*vl_vr;
 	int		i;
 	char	*updt_vr;
 
 	i = -1;
-	equal_sign = ft_strchr(argument, '=');
-	if (equal_sign == NULL)
-		return ;
-	*equal_sign = '\0';
-	*nm_vr = argument;
-	*vl_vr = equal_sign + 1;
+	nm_vr = argument;
+	vl_vr = ft_strchr(argument, '=') + 1;
 	while (g_data.env[++i])
 	{
-		if (!ft_strncmp(g_data.env[i], nm_vr, fr_strlen(nm_vr))
+		if (!ft_strncmp(g_data.env[i], nm_vr, ft_strlen(nm_vr))
 			&& g_data.env[i][ft_strlen(nm_vr)] == '=')
 		{
 			updt_vr = malloc(ft_strlen(nm_vr) + ft_strlen(vl_vr) + 2);
@@ -61,7 +56,8 @@ void	export(char *argument)
 		}
 	}
 	updt_vr = malloc(ft_strlen(nm_vr) + ft_strlen(vl_vr) + 2);
-	return (g_data.env[i] = updt_vr, g_data.env[i + 1] = NULL);
+	g_data.env[i] = updt_vr;
+	g_data.env[i + 1] = NULL;
 }
 
 void	unset(char *s)

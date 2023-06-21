@@ -6,7 +6,7 @@
 /*   By: obelaizi <obelaizi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 15:15:43 by aait-mal          #+#    #+#             */
-/*   Updated: 2023/06/11 16:25:39 by obelaizi         ###   ########.fr       */
+/*   Updated: 2023/06/12 12:11:57 by obelaizi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,26 @@ typedef struct cmds
 	struct cmds	*next;
 }	t_cmd;
 
+typedef struct tkns
+{
+	int	pipe;
+	int	heredoc;
+	int	append;
+	int	out;
+	int	in;
+}	t_tkns;
+
 typedef struct minikhell
 {
 	char	**env;
 	t_cmd	*head;
+	t_tkns	tkns;
 }	t_data;
 
 t_data	g_data;
 
 void	display_prompt(void);
+void	parse(char *str);
+int		count_str(const char *s, const char *s1);
 
 #endif
