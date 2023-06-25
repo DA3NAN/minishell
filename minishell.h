@@ -6,7 +6,7 @@
 /*   By: obelaizi <obelaizi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 15:15:43 by aait-mal          #+#    #+#             */
-/*   Updated: 2023/06/12 12:11:57 by obelaizi         ###   ########.fr       */
+/*   Updated: 2023/06/24 12:46:57 by obelaizi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 typedef struct cmds
 {
 	char		*s;
+	char		*flg;
 	struct cmds	*next;
 }	t_cmd;
 
